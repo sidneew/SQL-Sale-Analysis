@@ -84,18 +84,19 @@ SET Discount = '0'
 WHERE Discount = ' -   ';
 
 -- 4. Creating and removing columns
-SELECT 
-`Order Date`,
-Order_ID,
-`Customer Name`,
-Country,
-`Ship Mode`,
-Category,
-`Sub-Category`,
-`Product Name`,
-Quantity,
-ROUND(Sales + (Discount * Quantity), 2) AS `Pre-Discounted Sales`,
-ROUND(Discount * Quantity, 2) AS `Total Discount`,
-Sales,
-Profit
-FROM Orders_staging2;
+CREATE TABLE clean_orders AS 
+	SELECT 
+	`Order Date`,
+	Order_ID,
+	`Customer Name`,
+	Country,
+	`Ship Mode`,
+	Category,
+	`Sub-Category`,
+	`Product Name`,
+	Quantity,
+	ROUND(Sales + (Discount * Quantity), 2) AS `Pre-Discounted Sales`,
+	ROUND(Discount * Quantity, 2) AS `Total Discount`,
+	Sales,
+	Profit
+	FROM Orders_staging2;
